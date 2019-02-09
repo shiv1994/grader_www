@@ -1,5 +1,5 @@
-from html_validator import validate
 import os
+import requests
 
 path = "./public/"
 
@@ -8,7 +8,7 @@ def validateProject():
     for file in os.listdir(path):
         if file.endswith(".html"):
             file = os.path.join(path, file);
-            report[file] = validate(file)
-    return report
+            report[file] = requests.post('https://validator.w3.org/nu/?out=json', files={'upload_file': open(file, 'rb')})
+    return report;
         
     
