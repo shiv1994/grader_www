@@ -1,25 +1,7 @@
-import os, json
+import os, json, webbrowser
 from html.parser import HTMLParser
 
-# check_list = [
-#     {'marks':1, 'tag':'html'},
-#     {'marks':1, 'tag':'p'},
-#     {'marks':1, 'tag':'a'},
-#     {'marks':1, 'tag':'h1'},
-#     {'marks':1, 'tag':'h2'},
-#     {'marks':1, 'tag':'h3'},
-#     {'marks':1, 'tag':'ul'},
-#     {'marks':1, 'tag':'li'},
-#     {'marks':1, 'tag':'ol'},
-#     {'marks':1, 'tag':'div'},
-#     {'marks':1, 'tag':'title'},
-#     {'marks':1, 'tag':'body'},
-#     {'marks':1, 'tag':'head'},
-#     {'marks':1, 'tag':'h4'},
-# ]
-
 class MyParser(HTMLParser):
-
     start_tags = []
     end_tags = []
 
@@ -34,11 +16,21 @@ class MyParser(HTMLParser):
         end_tags = set(self.end_tags)
         return (start_tags and end_tags)
 
+def determine_os():
+    if os.name == 'posix':
+        return 'open -a /Applications/Google\ Chrome.app %s'
+    elif os.name == 'nt':
+        return 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+    else:
+        return '/usr/bin/google-chrome %s'
+
 def determine_marks():
     # Get current working directory.
     cwd  = os.getcwd()
+    # Path to html file.
+    html_file_path = cwd + "/scripts/home.html"
     # Load html file that will be checked.
-    html_file = open(cwd + "/scripts/home.html", "r").read()
+    html_file = open(html_file_path, "r").read()
     # Load json file containing mark scheme.
     with open(cwd + "/tags.json", "r") as json_tags_file:
         html_tag_data = json.load(json_tags_file)
@@ -61,6 +53,7 @@ def determine_marks():
                 exists = True
         if(not exists):
             total_marks_to_minus += corresponding_item['marks']
+    webbrowser.get(determine_os()).open(html_file_path, 0, True)
     return total_marks_to_minus
 
 print("We need to minus:" ,determine_marks(), " mark(s).")
