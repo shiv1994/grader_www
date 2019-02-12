@@ -28,7 +28,7 @@ def determine_marks():
     # Get current working directory.
     cwd  = os.getcwd()
     # Path to html file.
-    html_file_path = cwd + "/scripts/home.html"
+    html_file_path = cwd + "/public/index.html"
     # Load html file that will be checked.
     html_file = open(html_file_path, "r").read()
     # Load json file containing mark scheme.
