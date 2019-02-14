@@ -1,18 +1,16 @@
 {
     "tag_marks":[
-        {"marks":1, "tag":"html"},
-        {"marks":1, "tag":"p"},
-        {"marks":1, "tag":"a"},
-        {"marks":1, "tag":"h1"},
-        {"marks":1, "tag":"h2"},
-        {"marks":1, "tag":"h3"},
-        {"marks":1, "tag":"ul"},
-        {"marks":1, "tag":"li"},
-        {"marks":1, "tag":"ol"},
+        {"marks":1, "tag":"meta"},
         {"marks":1, "tag":"div"},
-        {"marks":1, "tag":"title"},
-        {"marks":1, "tag":"body"},
-        {"marks":1, "tag":"head"},
-        {"marks":1, "tag":"h4"}
+        {"marks":1, "tag":"p"},
+        {"marks":1, "tag":"ul"},
+        {"marks":1, "tag":"ol"},
+        {"marks":1, "tag":"li"},
+        {"marks":1, "tag":"table"},
+        {"marks":1, "tag":"thead"},
+        {"marks":1, "tag":"tbody"},
+        {"marks":1, "tag":"form"},
+        {"marks":1, "tag":"img"},
+        {"marks":1, "tag":"script"}
     ]
 }
